@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e login simples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="cabecalho">
+        <h1>Criar conta</h1>
+    </header>
+    <div id="card">
+        <form id="campos">
+            
+            <input type="text" id="username" class="campos" placeholder="Crie um username">
+            <input type="email" id="email" class="campos" placeholder="Insira seu email">
+            
+            <div class="senha-container">
+                <input type="password" placeholder="Senha" class="campos" id="senha">
+                <button type="button" id="mostrar-senha" >👁</button>
+            </div>
+
+            <div id="caminho">
+                <p>Ainda não possui uma conta?</p>
+                <a href="login.html">Criar conta</a>
+            </div>
+
+            <input type="submit" value="Criar conta" id="criar-conta">
+            
+        </form>
+    </div>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
