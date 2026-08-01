@@ -1,27 +1,37 @@
 const usuarioModel = require("../models/usuarioModel");
+const bcrypt = require("bcrypt");
 
 async function cadastrarUsuario(req, res) {
 
-    const { nome, email, senha } = req.body;
+    try {
+        const { nome, email, senha } = req.body;
+    
+        if (!nome || !email || !senha) {
+            return res.status(400).json({
+                mensagem: "Todos os campos são obrigatórios!!!"
+            })
+        }
+    
+        const usuario = await usuarioModel.buscarPorEmail(email)
+    
+        if (usuario){
+            return res.status(409).json({
+                mensagem: "Email já cadastrado!!!"
+            })
+        }
+        const senhaHash = await bcrypt.hash(senha,10);
 
-    if (!nome || !email || !senha) {
-        return res.status(400).json({
-            mensagem: "Todos os campos são obrigatórios!!!"
-        })
-    }
-
-    const usuario = await usuarioModel.buscarPorEmail(email)
-
-    if (!usuario){
-        await usuarioModel.criarUsuario(nome, email, senha)
+        await usuarioModel.criarUsuario(nome, email, senhaHash)
 
         return res.status(201).json({
-            mensagem: "Usuário criado!"
+            mensagem: "Usuário cadastrado com sucesso."
         })
-    } else {
-        return res.status(400).json({
-            mensagem: "Email já cadastrado!!!"
-        })
+        
+    } catch (erro) {
+        console.error(erro);
+        return res.status(500).json({
+            mensagem: "Erro interno do servidor."
+        });
     }
 }
 

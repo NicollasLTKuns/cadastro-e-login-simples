@@ -1,5 +1,5 @@
 import {verSenha} from './função.js'
+import {cadastrarUsuario} from './função.js'
 
-const bntVerSenha = document.getElementById('mostrar-senha')
-
-bntVerSenha.addEventListener("click", verSenha)
+document.getElementById('mostrar-senha').addEventListener("click", verSenha);
+cadastrarUsuario();
