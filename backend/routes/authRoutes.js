@@ -11,5 +11,6 @@ router.get("/teste", (req, res) => {
 });
 
 router.post("/cadastro", authController.cadastrarUsuario)
+router.post("/login", authController.loginUsuario);
 
 module.exports = router;

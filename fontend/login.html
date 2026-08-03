@@ -11,12 +11,12 @@
         <h1>Fazer Login</h1>
     </header>
     <div id="card">
-        <form id="campos">
+        <form id="campos-login">
     
-            <input type="text" class="campos" placeholder="Usuário ou email">
+            <input type="text" autocomplete="username" class="campos-login" id="nome-email" placeholder="Usuário ou email" required>
     
             <div class="senha-container">
-                <input type="password" class="campos" id="senha" placeholder="Senha">
+                <input type="password" autocomplete="current-password" class="campos-login" id="senha" placeholder="Senha" required>
                 <button type="button" id="mostrar-senha">👁</button>
             </div>
     

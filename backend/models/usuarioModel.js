@@ -38,6 +38,25 @@ function criarUsuario(nome, email, senha) {
     });
 }
 
+function buscarPorIdentificador(identificador) {
+    return new Promise((resolve, reject) => {
+        db.get(
+            `SELECT *
+            FROM usuarios
+            WHERE email = ?
+               OR nome_usuario = ?;`,
+            [identificador, identificador],
+            (erro, usuario) => {
+                if (erro) {
+                    reject(erro);
+                } else {
+                    resolve(usuario);
+                }
+            }
+        );
+    });
+}
+
 module.exports = {
     buscarPorEmail,
     criarUsuario
