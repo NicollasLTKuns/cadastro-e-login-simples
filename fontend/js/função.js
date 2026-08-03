@@ -11,6 +11,8 @@ export function verSenha() {
 export function cadastrarUsuario() {
     const form = document.getElementById("campos-cadastro")
 
+    if (!form) return;
+
     form.addEventListener("submit", async (evento) => {
         evento.preventDefault()
 
@@ -53,6 +55,8 @@ export function cadastrarUsuario() {
 
 export function loginUsuario() {
     const form = document.getElementById("campos-login")
+
+    if (!form) return;
 
     form.addEventListener("submit", async (evento) => {
         evento.preventDefault()

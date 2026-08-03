@@ -44,7 +44,7 @@ function buscarPorIdentificador(identificador) {
             `SELECT *
             FROM usuarios
             WHERE email = ?
-               OR nome_usuario = ?;`,
+               OR nome = ?;`,
             [identificador, identificador],
             (erro, usuario) => {
                 if (erro) {
@@ -59,5 +59,6 @@ function buscarPorIdentificador(identificador) {
 
 module.exports = {
     buscarPorEmail,
-    criarUsuario
+    criarUsuario,
+    buscarPorIdentificador
 };
